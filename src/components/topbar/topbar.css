@@ -1,0 +1,108 @@
+.topbardiv{
+    background-color: #0866ff;
+    height: 50px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+   
+    
+}
+.topbarlogo{
+    color: white;
+    width: 20%;
+    font-size: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.topbarSearch{
+    width: 42%;
+    color: black;
+    display: flex;
+    align-items: center;
+    
+    background-color: white;
+    height: 34px;
+    border-radius: 20px;
+
+
+}
+.topbarSearch input{
+    border: none;
+    width: 90%;
+    margin-left: 10px;
+}
+
+.topbarSearch input:focus{
+    outline: none;
+}
+.topbarRight{
+    display: flex;
+    align-items: center;
+    color: white;
+    width: 38%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.topbarlinks{
+    margin: 0 5px;
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+
+}
+.topbarAlerts{
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 10px;
+}
+.topbarAlerts div{
+    
+    
+    
+}
+.topbarAlerts img{
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.warn{
+    background-color: red;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    padding: 2px 2px;
+   
+}
+@media (max-width:945px) {
+    .topbarlogo{
+        width: 35%;
+    }
+    .topbarSearch{
+        width: 65%;
+    }
+    .topbardiv{
+        height: 100px;
+    }
+    .topbarRight{
+        width: 100%;
+    }
+}
+@media (max-width:400px){
+    .topbardiv{
+        height: 140px;
+    }
+    .topbarAlerts {
+        width: 100%;
+    }
+    .topbarlinks{
+        width: 100%;
+    }
+    .topbarRight{
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
