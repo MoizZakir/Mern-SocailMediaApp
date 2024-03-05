@@ -2,12 +2,73 @@
     width: 50%;
     background-color: rgb(230, 230, 230);
     height: 90vh;
+    
 }
 @media (max-width:945px){
     .feed{
         width: 70%;
     }   
 }
+
+
+.feedActivities{
+    width: 98%;
+    height: max-content;
+    background-color: white;
+    margin: 12px auto;
+    border-radius: 10px;
+    box-shadow: -7px -11px 15px -3px rgba(0,0,0,0.1);
+}
+
+
+.postCreate {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+}
+
+.postCreate img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.postCreate input{
+    padding-left: 20px;
+    font-size: 16px;
+    height: 50px;
+    border: none;
+    width: 90%;
+}
+.postCreate input:focus{
+    outline: none;
+}
+
+
+.postFeeling{
+    padding: 30px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin: 0px 20px;
+}
+
+.postFeeling button{
+    margin-left: 10px;
+    background-color: green;
+    border: none;
+    border-radius: 8px;
+    padding: 5px 10px;
+    color: white;
+}
+
+
+.feelingItems{
+
+    display: flex;
+    align-items: center;
+}
+
 @media (max-width:700px){
     .feed{
         width: 100%;
