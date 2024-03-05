@@ -1,12 +1,14 @@
 .feed{
     width: 50%;
     background-color: rgb(230, 230, 230);
-    height: 90vh;
+    height: max-content;
+    overflow-y: scroll;
     
 }
 @media (max-width:945px){
     .feed{
         width: 70%;
+        height: max-content;
     }   
 }
 
@@ -67,6 +69,76 @@
 
     display: flex;
     align-items: center;
+}
+
+.post{
+    height: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+::-webkit-scrollbar {
+    width: 15px;
+    /* margin-left: 100px; */
+
+}
+
+::-webkit-scrollbar-track {
+
+    background-color: rgb(228, 226, 226);
+    padding-left: 200px;
+}
+
+::-webkit-scrollbar-thumb {
+
+    background-color: rgb(151, 151, 151);
+}
+
+.postTop {
+    margin-left: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.postTop img{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+
+}
+.poster{
+    width: 90%;
+    margin-left: 10px;
+    object-fit: cover;
+}
+.post p{
+    margin: 10px 14px;
+}
+.postOption{
+  
+    margin-right: 10px;
+}
+.postInfo{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+}
+
+.postOwner{
+    font-weight: bold;
+}
+.postTime{
+    color: grey;
 }
 
 @media (max-width:700px){

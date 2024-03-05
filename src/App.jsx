@@ -8,7 +8,7 @@ function App() {
   
 
   return (
-    <>
+    <div >
     <Topbar/>
     <div className="bodyContainer">
       
@@ -16,7 +16,7 @@ function App() {
     <Feed/>
     <Rightbar/>
     </div>
-    </>
+    </div>
   )
 }
 
