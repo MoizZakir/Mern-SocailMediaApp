@@ -1,0 +1,12 @@
+.rightbar{
+    width: 30%;
+    background-color: rgb(211, 211, 211);
+}
+
+
+
+@media (max-width:700px){
+    .rightbar{
+        display: none;
+    }
+}

@@ -1,0 +1,15 @@
+.feed{
+    width: 50%;
+    background-color: rgb(230, 230, 230);
+    height: 90vh;
+}
+@media (max-width:945px){
+    .feed{
+        width: 70%;
+    }   
+}
+@media (max-width:700px){
+    .feed{
+        width: 100%;
+    }  
+}
