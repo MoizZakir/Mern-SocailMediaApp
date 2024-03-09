@@ -1,15 +1,17 @@
 .sidebar {
     width: 20%;
-    background-color: rgb(205, 205, 205);
+    background-color: rgb(244, 240, 240);
     overflow-y: scroll;
     height: 90vh;
     position: sticky;
+    top:50px
+
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 5px;}
 
-}
+
 
 ::-webkit-scrollbar-track {
 
