@@ -53,8 +53,9 @@
    
     
     object-fit: cover;
-    width: 90px;
-    height: 90px;
+    width: 110px;
+    height: 110px;
+    border: 2px solid white;
     border-radius: 50%;
 
 }
