@@ -11,7 +11,8 @@ import { Post } from './Post';
 
 
 
-export const Feed = () => {
+export const Feed = ({profile,
+  setProfile}) => {
   return (
     <div className='feed'>
 
@@ -46,7 +47,8 @@ export const Feed = () => {
       </div>
 
       <div className="allPosts">
-        <Post/>
+        <Post profile={profile}
+setProfile={setProfile}/>
         <Post/>
         <Post/>
         <Post/>

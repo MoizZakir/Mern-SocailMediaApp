@@ -6,15 +6,18 @@ import {Rightbar} from '../../components/rightbar/Rightbar'
 
 import   './Home.css'
 
-function Home() {
+function Home({profile,
+  setProfile}) {
   return (
     <div>
         <Topbar/>
     <div className="bodyContainer">
       
-    <Sidebar/>
-    <Feed/>
-    <Rightbar/>
+    <Sidebar  />
+    <Feed profile={profile}
+setProfile={setProfile}/>
+    <Rightbar profile={profile}
+setProfile={setProfile}/>
     </div>
     </div>
   )

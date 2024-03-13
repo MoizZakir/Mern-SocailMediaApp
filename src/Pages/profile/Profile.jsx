@@ -6,7 +6,10 @@ import { Sidebar } from '../../components/sidebar/Sidebar'
 import { Rightbar } from '../../components/rightbar/Rightbar'
 import Topbar from '../../components/topbar/Topbar'
 
-export const Profile = () => {
+export const Profile = ({profile,
+    setProfile}) => {
+    
+    console.log(profile)
   return (
         <><Topbar/>
     <div className='Porfile'>

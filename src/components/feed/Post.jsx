@@ -3,15 +3,20 @@ import './feed.css'
 import { HiDotsVertical } from "react-icons/hi";
 import { AiFillLike } from "react-icons/ai";
 import { IoHeartCircle } from "react-icons/io5";
+import { Link } from 'react-router-dom';
 
 
-export const Post = () => {
+export const Post = ({profile,
+  setProfile}) => {
   return (
     <div> <div className="post">
     <div className="postTop">
       <div className='postInfo'>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-      <span className='postOwner'>Moiz Zakir</span>
+      <span className='postOwner' ><Link to={"/profile"} onClick={()=>{
+        setProfile(!profile)
+       
+      }}>Moiz Zakir </Link></span>
       <span className='postTime'>5 mins Ago</span></div>
       
       <HiDotsVertical  className='postOption'/>

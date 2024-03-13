@@ -3,7 +3,8 @@ import './rightbar.css'
 import OnlineFreind from './OnlineFreind'
 
 
-export const Rightbar = () => {
+export const Rightbar = ({profile,
+  setProfile}) => {
 
 
 
@@ -88,9 +89,9 @@ export const Rightbar = () => {
   }
   return (
     <div className='rightbar'>
-      <ProfileRightbar/>
-      <HomeRightbar/>
-
+    {profile? <ProfileRightbar/>
+     : <HomeRightbar/>
+    }
 
     </div>
   )
