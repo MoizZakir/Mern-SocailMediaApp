@@ -3,6 +3,8 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: rgb(255, 255, 255);
     font-size: 14px;
+    display: flex;
+    flex-direction: column;
     /* position: sticky; */
     height: 90vh;
     /* top: 50px; */
@@ -54,6 +56,31 @@
     font-weight: 600;
     margin-left: 12px;
     letter-spacing: 2px;
+}
+.rightbarFollowings{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.RightbarTitle{
+    margin: 10px 2px;
+    font-weight: 700;
+
+}
+.rightbarFollowing{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 12px 15px;
+    gap: 5px;
+}
+.rightbarinfoItems{
+    margin: 20px 0;
+}
+.rightbarFollowing img{
+    width:70px;
+    height: 55px;
+    border-radius: 10%;
 }
 
 @media (max-width:700px){

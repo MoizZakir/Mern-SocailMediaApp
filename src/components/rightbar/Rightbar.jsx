@@ -4,8 +4,12 @@ import OnlineFreind from './OnlineFreind'
 
 
 export const Rightbar = () => {
-  return (
-    <div className='rightbar'>
+
+
+
+  const HomeRightbar=()=>{
+    return(
+      <>
       <div className="rightbarWrap">
         <div className='birthdays'>
           <img src="https://media.istockphoto.com/id/1092429810/vector/red-gift-box-vector-flat-icon-illustration-for-birthday-christmas-promotions-contests.jpg?s=612x612&w=0&k=20&c=38vOPZCMI58ZpWcIZpGjXWMAIAXGtBI1coBEJOXX4QE=" alt="" />
@@ -23,7 +27,69 @@ export const Rightbar = () => {
           <OnlineFreind/>
           <OnlineFreind/>
         </div>
-      </div>
+      </div></>
+    )
+  }
+  const ProfileRightbar=()=>{
+    return(<> 
+    
+    
+    <h4 className='RightbarTitle'>UserInformation</h4>
+
+<div className="rightbarinfo">
+  <div className="rightbarinfoItems">
+    <span>
+      City:
+    </span>
+    <span>
+      NewYork
+    </span>
+  </div>
+  <div className="rightbarinfoItems">
+    <span>
+      From:
+    </span>
+    <span>
+    Madrid
+    </span>
+  </div>
+  <div className="rightbarinfoItems">
+    <span>
+      RelationShip:
+    </span>
+    <span>
+      Single
+    </span>
+  </div>
+</div>
+<h4 className='RightbarTitle'>UserFreinds</h4>
+<div className="rightbarFollowings">
+  <div className="rightbarFollowing">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
+    <span>John Cena</span>
+  </div>
+  <div className="rightbarFollowing">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
+    <span>John Cena</span>
+  </div>
+  <div className="rightbarFollowing">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
+    <span>John Cena</span>
+  </div>
+  <div className="rightbarFollowing">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
+    <span>John Cena</span>
+  </div>
+
+</div>
+
+
+    </>)
+  }
+  return (
+    <div className='rightbar'>
+      <ProfileRightbar/>
+      <HomeRightbar/>
 
 
     </div>
