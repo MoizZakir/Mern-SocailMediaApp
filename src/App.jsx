@@ -22,9 +22,8 @@ function App() {
       element:<Login/>
     },
     {
-      path:'/Home',
-      element:<Home profile={profile}
-      setProfile={setProfile}/>
+      path:'/home',
+      element:<Home/>
     },
     {
       path:'/signup',
@@ -32,8 +31,7 @@ function App() {
     },
     {
       path:'/profile',
-      element:<Profile  profile={profile}
-      setProfile={setProfile}/>
+      element:<Profile />
     },
    ]
   );
