@@ -6,50 +6,27 @@ import Login from './Pages/Login/Login'
 import Register from './Pages/Register/Register'
 import { Profile } from './Pages/profile/Profile'
 import {
-  createBrowserRouter,
-  createRoutesFromElements,
+  BrowserRouter,
+  Routes,
   Route,
-  RouterProvider,
-} from "react-router-dom";
+  Link,
+} from  "react-router-dom";
 
 function App() {
   const [profile,setProfile]=useState(false)
-  const router = createBrowserRouter(
-   [
-    {
-      path:'/',
-    
-      element:<Login/>
-    },
-    {
-      path:'/home',
-      element:<Home/>
-    },
-    {
-      path:'/signup',
-      element:<Register/>
-    },
-    {
-      path:'/profile',
-      element:<Profile />
-    },
-   ]
-  );
- 
- 
+  
   
   
   return (
-    <div >
-      <RouterProvider router={router} />
-      
-      {/* <RouterProvider router={router} /> */}
-     
-    {/* <Home/> */}
-    {/* <Profile/> */}
-    {/* <Login/> */}
-   
-    </div>
+    
+    <BrowserRouter>
+    <Routes>
+      <Route exact path="/" element={<Login />} />
+      <Route path="home" element={<Home />} />
+      <Route path="signup" element={<Register />} />
+      <Route path="profile" element={<Profile />} />
+    </Routes>
+  </BrowserRouter>
   )
 }
 
