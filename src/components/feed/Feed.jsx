@@ -11,8 +11,7 @@ import { Post } from './Post';
 
 
 
-export const Feed = ({profile,
-  setProfile}) => {
+export const Feed = ({filteData}) => {
   return (
     <div className='feed'>
 
@@ -47,14 +46,8 @@ export const Feed = ({profile,
       </div>
 
       <div className="allPosts">
-        <Post profile={profile}
-setProfile={setProfile}/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        <Post/>
-        
+        <Post filteData={filteData}/>
+       
       </div>
 
 

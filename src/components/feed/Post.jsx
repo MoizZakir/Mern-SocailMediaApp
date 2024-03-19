@@ -4,19 +4,18 @@ import { HiDotsVertical } from "react-icons/hi";
 import { AiFillLike } from "react-icons/ai";
 import { IoHeartCircle } from "react-icons/io5";
 import { Link } from 'react-router-dom';
+import profilepic from '../../assets/download.jpeg'
 
 
-export const Post = ({profile,
-  setProfile}) => {
+export const Post = ({filteData}) => {
+  console.log(filteData)
   return (
     <div> <div className="post">
     <div className="postTop">
       <div className='postInfo'>
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-      <span className='postOwner' ><Link to={"/profile"} onClick={()=>{
-        setProfile(!profile)
-       
-      }}>Moiz Zakir </Link></span>
+      <img src={profilepic} alt="" />
+      <Link to={`/profile/Sophia Martinez`}>
+      <span className='postOwner'> cd</span></Link>
       <span className='postTime'>5 mins Ago</span></div>
       
       <HiDotsVertical  className='postOption'/>

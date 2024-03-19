@@ -24,7 +24,7 @@ function App() {
       <Route exact path="/" element={<Login />} />
       <Route path="home" element={<Home />} />
       <Route path="signup" element={<Register />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path="profile/:username" element={<Profile />} />
     </Routes>
   </BrowserRouter>
   )
