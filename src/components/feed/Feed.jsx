@@ -1,54 +1,51 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './feed.css'
-import { IoMdPhotos } from "react-icons/io";
-import { PiTagSimpleFill } from "react-icons/pi";
-import { FaLocationDot } from "react-icons/fa6";
-import { MdEmojiEmotions } from "react-icons/md";
+import axios from 'axios';
 
 import { Post } from './Post';
+import Share from './Share';
+import { AuthContext } from '../../Context/AuthContext';
 
 
 
 
 
-export const Feed = ({filteData}) => {
+export const Feed = ({username}) => {
+  const {user}=useContext(AuthContext)
+  console.log(username)
+  const [postData,setPostData]=useState([])
+
+  
+  useEffect(()=>{
+    const getData=async()=>{
+      const res= username? await axios.get(`http://localhost:8000/api/post/profile/${username}`)
+      :await axios.get(`http://localhost:8000/api/post/timeline/${user._id}`)
+      setPostData(res.data)
+      console.log(res)}
+      getData()
+  },[user._id])
+  
+  
   return (
     <div className='feed'>
 
 
-
-      <div className="feedActivities">
-        <div className="postCreate">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-          <input type="text" placeholder="what's on your mind?" />
-        </div>
-        <hr />
-        <div className='postFeeling'>
-          <div className='feelingItems'>
-            <IoMdPhotos fill='pink' /> <span>Photos</span>
-          </div>
-          <div className='feelingItems'>
-            <PiTagSimpleFill fill='blue' /> <span>Tags</span>
-          </div>
-          <div className='feelingItems'>
-            <FaLocationDot fill='green' /> <span>Location</span>
-          </div>
-          <div className='feelingItems'>
-            <MdEmojiEmotions fill='yellow' /> <span>Feelings</span>
-          </div>
-
-          <button>Share</button>
-
-        </div>
-
-
-
-      </div>
+    
+     {!username?<Share/>:''}
+    
 
       <div className="allPosts">
-        <Post filteData={filteData}/>
+        {postData?.map((e,i)=>(
+      
+          
+
+            <Post key={i} Postdata={e} />)
+          )
+
+        }
        
       </div>
+      
 
 
 

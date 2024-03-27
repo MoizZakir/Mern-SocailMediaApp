@@ -1,26 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Topbar from '../../components/topbar/Topbar'
 import {Sidebar }from '../../components/sidebar/Sidebar'
 import {Feed} from '../../components/feed/Feed'
 import {Rightbar} from '../../components/rightbar/Rightbar'
 
 import   './Home.css'
+import { AuthContext } from '../../Context/AuthContext'
+import { Navigate } from 'react-router-dom'
 
 function Home({profile,
   setProfile}) {
+    const {user}=useContext(AuthContext)
+    console.log(user)
     
   return (
-    <div>
-        <Topbar/>
-    <div className="bodyContainer">
-      
-    <Sidebar  />
-    <Feed profile={profile}
+    <>
+    {!user?<Navigate to='/' />
+
+:(<div>
+  <Topbar/>
+<div className="bodyContainer">
+
+<Sidebar  />
+<Feed />
+<Rightbar profile={profile}
 setProfile={setProfile}/>
-    <Rightbar profile={profile}
-setProfile={setProfile}/>
-    </div>
-    </div>
+</div>
+</div>
+)}
+</>
   )
 }
 
