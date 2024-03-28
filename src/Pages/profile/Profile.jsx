@@ -55,7 +55,7 @@ export const Profile = ({}) => {
         <div className='profileRightBottom'>
 
         <Feed username={username} className='feed '/>
-        <Rightbar data={1} className='rightbar'/>
+        <Rightbar data={1} user={user} className='rightbar'/>
     </div>
     </div>
         

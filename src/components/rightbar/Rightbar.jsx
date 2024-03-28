@@ -1,10 +1,33 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './rightbar.css'
 import OnlineFreind from './OnlineFreind'
+import { AuthContext } from '../../Context/AuthContext'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
-export const Rightbar = ({data}) => {
+export const Rightbar = ({user,data}) => {
 
+  console.log(user)
+  const [friend,setFriend]=useState([])
+  const{user:current_user}=useContext(AuthContext)
+  const followHandler=()=>{
+    
+  }
+
+  useEffect(()=>{
+    const fetchFrind=async()=>{
+    try {
+      const getFreind=await axios.get('http://localhost:8000/api/user/freinds/'+user?._id)
+      setFriend(getFreind.data)
+
+      
+    } catch (error) {
+      
+    }
+  }
+  fetchFrind()
+  },[user?._id])
 
 
   const HomeRightbar=()=>{
@@ -33,10 +56,11 @@ export const Rightbar = ({data}) => {
   const ProfileRightbar=()=>{
     return(<> 
     
-    
+    {current_user._id!==user._id && (<button onClick={followHandler} >Follow</button>)}
     <h4 className='RightbarTitle'>UserInformation</h4>
 
 <div className="rightbarinfo">
+  
   <div className="rightbarinfoItems">
     <span>
       City:
@@ -64,22 +88,19 @@ export const Rightbar = ({data}) => {
 </div>
 <h4 className='RightbarTitle'>UserFreinds</h4>
 <div className="rightbarFollowings">
-  <div className="rightbarFollowing">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-    <span>John Cena</span>
-  </div>
-  <div className="rightbarFollowing">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-    <span>John Cena</span>
-  </div>
-  <div className="rightbarFollowing">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-    <span>John Cena</span>
-  </div>
-  <div className="rightbarFollowing">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
-    <span>John Cena</span>
-  </div>
+  
+ { friend?.map((e)=>(
+  <Link to={`/profile/${e.username}`}>
+   <div className="rightbarFollowing">
+  <img src={!e.profilePicture==''?e.profilePicture:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU"} alt="" />
+  <span>{e.username}</span>
+</div>
+     </Link>
+
+
+ )
+
+ )}
 
 </div>
 
