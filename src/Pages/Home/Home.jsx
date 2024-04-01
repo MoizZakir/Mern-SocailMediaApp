@@ -11,6 +11,8 @@ import { Navigate } from 'react-router-dom'
 function Home({profile,
   setProfile}) {
     const {user}=useContext(AuthContext)
+    user && localStorage.setItem('token',user?._id)
+    
     console.log(user)
     
   return (

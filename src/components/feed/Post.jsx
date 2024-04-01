@@ -41,8 +41,11 @@ try {
   useEffect(()=>{
     const getUser=async()=>{
     const res= await axios.get(`http://localhost:8000/api/user?userId=${Postdata.userId}`)
-    setUserData(res.data)
-    console.log(res)}
+    setUserData(
+      
+      
+      res?.data)
+    console.log(res?.data)}
     getUser()
   },[Postdata.userId])
   

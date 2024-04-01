@@ -11,9 +11,33 @@ export const Rightbar = ({user,data}) => {
   console.log(user)
   const [friend,setFriend]=useState([])
   const{user:current_user}=useContext(AuthContext)
-  const followHandler=()=>{
+  const [isFriend,setIsFriend]=useState(false)
+  const followHandler=async()=>{
+
+    try {
+      if(isFriend){
+        const res= await axios.put(`http://localhost:8000/api/user/${user?._id}/unfollow`,{_id:current_user?._id})
+        console.log(res)
+        
+      }
+      else{
+        const res =await axios.put(`http://localhost:8000/api/user/${user?._id}/follow`,{_id:current_user?._id})
+        console.log(res)
+
+      }
+      // setIsFriend(!isFriend)
+
+      
+    } catch (error) {
+      console.log(error)
+    }
+   
     
   }
+  useEffect(()=>{
+    setIsFriend(current_user?.following?.includes(user?._id))
+
+  },[current_user,user?._id])
 
   useEffect(()=>{
     const fetchFrind=async()=>{
@@ -56,7 +80,7 @@ export const Rightbar = ({user,data}) => {
   const ProfileRightbar=()=>{
     return(<> 
     
-    {current_user._id!==user._id && (<button onClick={followHandler} >Follow</button>)}
+    {current_user._id!==user._id && (<button onClick={followHandler} > {isFriend?'unFollow':'Follow'}</button>)}
     <h4 className='RightbarTitle'>UserInformation</h4>
 
 <div className="rightbarinfo">

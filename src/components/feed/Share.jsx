@@ -7,10 +7,11 @@ import { MdEmojiEmotions } from "react-icons/md";
 import { AuthContext } from '../../Context/AuthContext';
 import { uploadFile } from '../../fireBase/uploadfile';
 import axios from 'axios';
+import { useNavigate } from 'react-router';
 
 
 function Share() {
-
+const navigate=useNavigate()
   const {user}=useContext(AuthContext);
   const desc=useRef();  
   const [img,setImg]=useState(null);
@@ -37,6 +38,8 @@ function Share() {
       const res=  await axios.post("http://localhost:8000/api/post/",post)
       console.log(res)
       alert('dataAdded')
+      navigate('/')
+      
 
     } catch (error) {
       alert(error)
@@ -55,6 +58,7 @@ function Share() {
           <input type="text" placeholder="what's on your mind?"  ref={desc}/>
         </div>
         <hr />
+        {img &&(<img style={{width:"700px", height:"200px" }} src={URL.createObjectURL(img)}></img>)}
         <div className='postFeeling'>
           <label htmlFor='file' className='feelingItems'>
             <IoMdPhotos fill='pink' /> <span>Photos</span>
