@@ -58,7 +58,7 @@ const navigate=useNavigate()
           <input type="text" placeholder="what's on your mind?"  ref={desc}/>
         </div>
         <hr />
-        {img &&(<img style={{width:"700px", height:"200px" }} src={URL.createObjectURL(img)}></img>)}
+        {img &&(<><img style={{width:"700px", height:"200px" }} src={URL.createObjectURL(img)}/> <h6 onClick={()=>{setImg(null)}}>X</h6></> )}
         <div className='postFeeling'>
           <label htmlFor='file' className='feelingItems'>
             <IoMdPhotos fill='pink' /> <span>Photos</span>

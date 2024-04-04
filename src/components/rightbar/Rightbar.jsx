@@ -18,12 +18,13 @@ export const Rightbar = ({user,data}) => {
       if(isFriend){
         const res= await axios.put(`http://localhost:8000/api/user/${user?._id}/unfollow`,{_id:current_user?._id})
         console.log(res)
+        // setIsFriend(true)
         
       }
       else{
         const res =await axios.put(`http://localhost:8000/api/user/${user?._id}/follow`,{_id:current_user?._id})
         console.log(res)
-
+        // setIsFriend(false)
       }
       // setIsFriend(!isFriend)
 
