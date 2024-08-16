@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './rightbar.css'
 import OnlineFreind from './OnlineFreind'
-import { AuthContext } from '../../Context/AuthContext'
+import { AuthContext, finder } from '../../Context/AuthContext'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { follow, unFollow } from '../../Context/AuthActions'
 
 
 export const Rightbar = ({user,data}) => {
 
   console.log(user)
   const [friend,setFriend]=useState([])
-  const{user:current_user}=useContext(AuthContext)
+  const{user:current_user, dispatch}=useContext(AuthContext)
   const [isFriend,setIsFriend]=useState(false)
   const followHandler=async()=>{
 
@@ -19,11 +20,18 @@ export const Rightbar = ({user,data}) => {
         const res= await axios.put(`http://localhost:8000/api/user/${user?._id}/unfollow`,{_id:current_user?._id})
         console.log(res)
         // setIsFriend(true)
+        dispatch({type:'UNFOLLOW',payload:current_user?.id})
+        
+        console.log(current_user)
         
       }
       else{
         const res =await axios.put(`http://localhost:8000/api/user/${user?._id}/follow`,{_id:current_user?._id})
         console.log(res)
+        dispatch({type:'FOLLOW',payload:current_user?.id})
+        
+        console.log(current_user)
+        // dispatch(follow(user?.id))
         // setIsFriend(false)
       }
       // setIsFriend(!isFriend)
@@ -78,10 +86,13 @@ export const Rightbar = ({user,data}) => {
       </div></>
     )
   }
+  
   const ProfileRightbar=()=>{
+    
+    const navigate=useNavigate()
     return(<> 
     
-    {current_user._id!==user._id && (<button onClick={followHandler} > {isFriend?'unFollow':'Follow'}</button>)}
+    {current_user._id!==user._id && (<button onClick={()=>followHandler() } > {isFriend?'unFollow':'Follow'}</button>)}
     <h4 className='RightbarTitle'>UserInformation</h4>
 
 <div className="rightbarinfo">
@@ -115,12 +126,12 @@ export const Rightbar = ({user,data}) => {
 <div className="rightbarFollowings">
   
  { friend?.map((e)=>(
-  <Link to={`/profile/${e.username}`}>
-   <div className="rightbarFollowing">
+  
+   <div className="rightbarFollowing" onClick={()=>{navigate(`/profile/${e.username}`); location.reload()}}>
   <img src={!e.profilePicture==''?e.profilePicture:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU"} alt="" />
   <span>{e.username}</span>
 </div>
-     </Link>
+     
 
 
  )
