@@ -53,6 +53,7 @@ export const Rightbar = ({user,data}) => {
     try {
       const getFreind=await axios.get('http://localhost:8000/api/user/freinds/'+user?._id)
       setFriend(getFreind.data)
+      console.log('getFreind===> ',getFreind)
 
       
     } catch (error) {

@@ -43,7 +43,7 @@ export default function Register  () {
                 
             } catch (error) {
                 console.log(error)
-                alert(error)
+                alert(error.response?.data.message)
                 
             }
         }

@@ -35,6 +35,9 @@ const navigate=useNavigate()
           alert(upload.message)
         }
       }
+      if(desc?.current.value=='' && !img){
+        return alert('please type some thing')
+      }
       const res=  await axios.post("http://localhost:8000/api/post/",post)
       console.log(res)
       alert('dataAdded')
@@ -58,7 +61,7 @@ const navigate=useNavigate()
           <input type="text" placeholder="what's on your mind?"  ref={desc}/>
         </div>
         <hr />
-        {img &&(<><img style={{width:"700px", height:"200px" }} src={URL.createObjectURL(img)}/> <h6 onClick={()=>{setImg(null)}}>X</h6></> )}
+        {img &&(<div style={{display:'flex' ,fontSize:"22px" ,color:'red'}}><img style={{width:"700px", height:"200px", objectFit:'cover', marginRight:'10px' }} src={URL.createObjectURL(img)}/> <h6 style={{fontWeight:'bolder', border:"1px solid red" ,height:"30px", width:'30px',borderRadius:"50%", textAlign:'center',paddingTop:'5px'}} onClick={()=>{setImg(null)}}>X</h6></div> )}
         <div className='postFeeling'>
           <label htmlFor='file' className='feelingItems'>
             <IoMdPhotos fill='pink' /> <span>Photos</span>
