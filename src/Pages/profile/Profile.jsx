@@ -64,18 +64,18 @@ export const Profile = ({}) => {
     <div className="profileRight">
         <div className="profileRightTop">
         <div className='profileCoverPic'>
-    <img src={currentUser?.coverPicture || ''} alt="" />
+    <img src={user?.coverPicture || ''} alt="" />
             </div>
             <div className="profileUserpic">
-                <img src={currentUser?.profilePicture || ''}  alt="" />
+                <img src={user?.profilePicture || ''}  alt="" />
             </div>
             {(user?._id==currentUser?._id)?(
-            <div style={{display:"flex",justifyContent:'center'}}>
+            <div style={{display:"flex", position:'absolute'}}>
                 <label style={{margin:'10px', fontSize:'35px'}} htmlFor="profilepicture"><CgProfile /></label>
                 <input style={{display:'none'}} id='profilepicture' type="file" onChange={(e)=>setProfileImg(e.target.files[0])} />
                 <label  style={{margin:'10px', fontSize:'35px'}}  htmlFor="coverpic"><FaCcDiscover /></label>
                 <input  style={{display:'none'}} id='coverpic' type="file" onChange={(e)=>setCoverImg(e.target.files[0])} />
-                <button onClick={()=>(profileImg || coverImg)?picUpload():alert("please add Picture")}>Uplaod</button>
+               {profileImg || coverImg &&(<button style={{height:"30px" ,width:"70px", margin:'26px 0'}} onClick={()=>(profileImg || coverImg)?picUpload():alert("please add Picture")}>Uplaod</button>)} 
                 
             </div>):''}
                 <div className='profileDetail'>

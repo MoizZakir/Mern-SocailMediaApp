@@ -5,6 +5,58 @@ import { AuthContext, finder } from '../../Context/AuthContext'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
 import { follow, unFollow } from '../../Context/AuthActions'
+import { FaEdit } from 'react-icons/fa'
+
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import { TextField } from '@mui/material'
+import { IoSend } from 'react-icons/io5'
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
+
+function BasicModal() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  return (
+    <div>
+      <Button style={{fontSize:'30px'}} onClick={handleOpen}><FaEdit /></Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
+            Text in a modal
+          </Typography>
+          <div>
+          <TextField id="standard-basic" label="name" variant="standard" />
+          <TextField id="standard-basic" label="city" variant="standard" />
+          <TextField id="standard-basic" label="country" variant="standard" /></div>
+          <Button style={{margin:'30px 0'}} variant="contained" endIcon={<IoSend />}>
+  Update
+</Button>
+        </Box>
+      </Modal>
+    </div>
+  );
+}
+
 
 
 export const Rightbar = ({user,data}) => {
@@ -94,9 +146,12 @@ export const Rightbar = ({user,data}) => {
     return(<> 
     
     {current_user._id!==user._id && (<button onClick={()=>followHandler() } > {isFriend?'unFollow':'Follow'}</button>)}
-    <h4 className='RightbarTitle'>UserInformation</h4>
+    <h4 style={{display:'flex', alignItems:'center'}} className='RightbarTitle'>UserInformation {user?._id==current_user?._id?<span style={{margin:'0px 10px'}}><BasicModal/>
+    </span>:''}</h4>
+    
 
 <div className="rightbarinfo">
+  
   
   <div className="rightbarinfoItems">
     <span>
