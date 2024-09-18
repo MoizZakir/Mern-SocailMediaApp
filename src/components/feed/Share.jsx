@@ -57,7 +57,7 @@ const navigate=useNavigate()
   return (
     <form className="feedActivities" onSubmit={submitHandler}>
         <div className="postCreate">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
+          <img src={user?.profilePicture!=''?user?.profilePicture:'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'} alt="" />
           <input type="text" placeholder="what's on your mind?"  ref={desc}/>
         </div>
         <hr />

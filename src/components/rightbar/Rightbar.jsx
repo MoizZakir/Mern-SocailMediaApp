@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import './rightbar.css'
 import OnlineFreind from './OnlineFreind'
 import { AuthContext, finder } from '../../Context/AuthContext'
@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material'
 import { IoSend } from 'react-icons/io5'
+import { useUpdateUser } from '../../Hooks/UserDataupdate'
 
 const style = {
   position: 'absolute',
@@ -27,9 +28,40 @@ const style = {
 };
 
 function BasicModal() {
+  const{user:current_user, dispatch}=useContext(AuthContext)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const navigate=useNavigate()
+  let name=useRef()
+  let city=useRef()
+  let country=useRef()
+  async function api(){
+    const userData={
+      username:name.current,
+      city:city.current,
+      form:country.current
+
+  }
+    if(name.current!='')
+    {
+      userData.username=name.current
+
+    }
+    if(city.current!='')
+    {
+      userData.city=city.current
+
+    }
+    if(country.current!='')
+    {
+      userData.from=country.current
+
+    }
+  await useUpdateUser(userData,current_user?._id,navigate,handleClose)
+
+  
+  }
 
   return (
     <div>
@@ -44,11 +76,12 @@ function BasicModal() {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Text in a modal
           </Typography>
+          <span style={{position:'absolute',top:30,right:20}}>X</span>
           <div>
-          <TextField id="standard-basic" label="name" variant="standard" />
-          <TextField id="standard-basic" label="city" variant="standard" />
-          <TextField id="standard-basic" label="country" variant="standard" /></div>
-          <Button style={{margin:'30px 0'}} variant="contained" endIcon={<IoSend />}>
+          <TextField id="standard-basic" label="name" variant="standard" onChange={(e)=>name.current=e.target.value} />
+          <TextField id="standard-basic" label="city" variant="standard" onChange={(e)=>city.current=e.target.value} />
+          <TextField id="standard-basic" label="country" variant="standard" onChange={(e)=>country.current=e.target.value} /></div>
+          <Button onClick={()=>api()} style={{margin:'30px 0'}} variant="contained" endIcon={<IoSend />}>
   Update
 </Button>
         </Box>
@@ -158,7 +191,7 @@ export const Rightbar = ({user,data}) => {
       City:
     </span>
     <span>
-      NewYork
+      {user?.city || "notMentioned"}
     </span>
   </div>
   <div className="rightbarinfoItems">
@@ -166,7 +199,8 @@ export const Rightbar = ({user,data}) => {
       From:
     </span>
     <span>
-    Madrid
+      {user?.from || 'notMentioned'}
+    
     </span>
   </div>
   <div className="rightbarinfoItems">
