@@ -20,13 +20,14 @@ function Topbar() {
             
         try {
             const user=await axios.get(`http://localhost:8000/api/user/?username=${username.current}`)
-            console.log(user)
-            if(user?.data){
+            console.log('====>>>>>>>',user)
+            if(user?.data?.status){
                 naviage(`/profile/${user?.data.username}`)
                 
 
             }
             else{
+                alert(user?.data?.message)
                 
             }
         } catch (error) {
@@ -62,10 +63,10 @@ function Topbar() {
                         <div><s><IoMdPerson fontSize="20px"/><span className='warn'>1</span></s></div>
                         <div><s><MdMessage fontSize="20px"/><span className='warn'>1</span></s></div>
                         <div style={{cursor:'pointer'}}><IoMdPower fontSize="23px" onClick={logOuthanlder}/></div>
-                        <Link  to={`/profile/${user.username}`}>
+                       
                         
-                        <img src={user?.profilePicture!=''?user?.profilePicture:'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'} alt="" />
-                        </Link>
+                        <img onClick={()=>window.location=`/profile/${user.username}`} src={user?.profilePicture!=''?user?.profilePicture:'https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg'} alt="" />
+                       
                     </div>
 
                 </div>

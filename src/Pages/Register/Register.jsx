@@ -21,6 +21,16 @@ export default function Register  () {
         if(password.current.value!==confirmPassword.current.value){
             password.current.setCustomValidity('Password does not match !')
         }
+        else if(
+            !username.current.value||
+!email.current.value||
+!password.current.value||
+!confirmPassword.current.value
+        
+        )
+        {
+           return  alert('please complete your information')
+        }
         else{
             const user={
                 username:username.current.value,

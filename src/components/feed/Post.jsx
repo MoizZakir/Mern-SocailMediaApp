@@ -132,7 +132,7 @@ try {
       <p>{Postdata.likes.length +like} people like it</p>
       </div>
       <div className="postComment">
-        2comments
+      <strike> 2comments</strike>
 
       </div>
     </div>

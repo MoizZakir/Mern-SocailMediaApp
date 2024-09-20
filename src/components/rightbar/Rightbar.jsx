@@ -218,7 +218,7 @@ export const Rightbar = ({user,data}) => {
  { friend?.map((e)=>(
   
    <div className="rightbarFollowing" onClick={()=>{navigate(`/profile/${e.username}`); location.reload()}}>
-  <img src={!e.profilePicture==''?e.profilePicture:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU"} alt="" />
+  <img src={!e.profilePicture==''?e.profilePicture:"https://img.freepik.com/premium-vector/default-avatar-profile-icon-social-media-user-image-gray-avatar-icon-blank-profile-silhouette-vector-illustration_561158-3383.jpg"} alt="" />
   <span>{e.username}</span>
 </div>
      

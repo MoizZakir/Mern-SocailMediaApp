@@ -2,12 +2,13 @@ import React, { useContext, useRef } from 'react'
 import './login.css'
 import { loginCalls } from '../apiCalls'
 import { AuthContext } from '../../Context/AuthContext'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 
 export default function 
 Login() {
     const {user,isFetching,error,dispatch}=useContext(AuthContext)
     const email=useRef() 
+    const navigate=useNavigate()
 
     
     console.log(isFetching)
@@ -33,14 +34,14 @@ Login() {
                 </span>
             </div>
             <div className="loginRight">
-                <form className="loginBox" onSubmit={handleClick}>
+                <form className="loginBox" >
                 <input type="text" required placeholder='Email' ref={email} />
                 <input type="password" required placeholder='Password' minLength={6} ref={password} />
-                <button className='loginbtn'>{isFetching? 'wait..':'Login'}</button>
+                <button className='loginbtn' onClick={()=>handleClick()}>{isFetching? 'wait..':'Login'}</button>
                 <span>
                     Forget Password?
                 </span>
-                <button className='newAccount'> Craete new Account</button>
+                <button className='newAccount' onClick={()=>navigate('/signup')}> Craete new Account</button>
                 </form>
             </div>
 
