@@ -72,7 +72,7 @@ export default function Register  () {
                     Create Account
                 </h3>
                 <span className='loginpara'>
-                    Connect with freinds and the  World arround you on  MoizSocial
+                    Connect with freinds and the  World arround you on  Moiz Media
                 </span>
             </div>
             <div className="loginRight">
@@ -83,7 +83,7 @@ export default function Register  () {
                 <input type="password" placeholder='ConfirmPassword'ref={confirmPassword} />
                 <button className='loginbtn' type='submit'>Register</button>
                 
-                <button className='newAccount' > Log into  Account</button>
+                <button onClick={()=>{navigate('/')}} className='newAccount' > Log into  Account</button>
                 </form>
             </div>
 

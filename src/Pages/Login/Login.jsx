@@ -27,10 +27,10 @@ Login() {
         <div className="loginWrapper">
             <div className="loginLeft">
                 <h3 className="Title">
-                    MoizSocial
+                    MoizMedia
                 </h3>
                 <span className='loginpara'>
-                    Connect with freinds and the  World arround you on  MoizSocial
+                    Connect with freinds and the  World arround you on  MoizMedia
                 </span>
             </div>
             <div className="loginRight">

@@ -99,13 +99,16 @@ export const Rightbar = ({user,data}) => {
   const{user:current_user, dispatch}=useContext(AuthContext)
   const [isFriend,setIsFriend]=useState(false)
   const followHandler=async()=>{
+    console.log(isFriend)
 
     try {
       if(isFriend){
         const res= await axios.put(`http://localhost:8000/api/user/${user?._id}/unfollow`,{_id:current_user?._id})
         console.log(res)
-        // setIsFriend(true)
+        // setIsFriend(()=>{setIsFriend(true)})
         dispatch({type:'UNFOLLOW',payload:current_user?.id})
+        location.reload()
+       
         
         console.log(current_user)
         
@@ -113,7 +116,10 @@ export const Rightbar = ({user,data}) => {
       else{
         const res =await axios.put(`http://localhost:8000/api/user/${user?._id}/follow`,{_id:current_user?._id})
         console.log(res)
+        setIsFriend(()=>{setIsFriend(false)})
         dispatch({type:'FOLLOW',payload:current_user?.id})
+        location.reload()
+        
         
         console.log(current_user)
         // dispatch(follow(user?.id))
@@ -178,7 +184,7 @@ export const Rightbar = ({user,data}) => {
     const navigate=useNavigate()
     return(<> 
     
-    {current_user._id!==user._id && (<button onClick={()=>followHandler() } > {isFriend?'unFollow':'Follow'}</button>)}
+    {current_user._id!==user._id && (<button style={{padding:'5px 10px' ,width:"120px",backgroundColor:'#0866ff',color:'white',border:'none' ,borderRadius:"8px"}} onClick={()=>followHandler() } > {isFriend?'unFollow':'Follow'}</button>)}
     <h4 style={{display:'flex', alignItems:'center'}} className='RightbarTitle'>UserInformation {user?._id==current_user?._id?<span style={{margin:'0px 10px'}}><BasicModal/>
     </span>:''}</h4>
     

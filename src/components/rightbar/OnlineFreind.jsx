@@ -6,7 +6,7 @@ import './rightbar.css'
      <div className='friends'>
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEUZrYHlA1Omsmisn1UTL18o4pY-X1c6Jmlw&usqp=CAU" alt="" />
         <span></span>
-        <p>SattarBhai</p>
+        <p>Example XYZ</p>
      </div>
    )
  }
