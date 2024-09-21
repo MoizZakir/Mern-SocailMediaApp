@@ -1,14 +1,16 @@
 import React, { useContext, useRef } from 'react'
 import './login.css'
+
 import { AuthContext } from '../../Context/AuthContext'
 import { Navigate,useNavigate } from 'react-router-dom'
 
 
 import axios from 'axios'
-
 export default function Register  () {
+    
     const {user}=useContext(AuthContext);
     const navigate=useNavigate()
+    
     
     const username=useRef()
     const email=useRef()

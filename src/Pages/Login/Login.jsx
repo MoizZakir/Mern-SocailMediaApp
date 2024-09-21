@@ -34,10 +34,10 @@ Login() {
                 </span>
             </div>
             <div className="loginRight">
-                <form className="loginBox" >
+                <form className="loginBox" onSubmit={handleClick} >
                 <input type="text" required placeholder='Email' ref={email} />
                 <input type="password" required placeholder='Password' minLength={6} ref={password} />
-                <button className='loginbtn' onClick={()=>handleClick()}>{isFetching? 'wait..':'Login'}</button>
+                <button className='loginbtn'>{isFetching? 'wait..':'Login'}</button>
                 <span>
                     Forget Password?
                 </span>

@@ -21,6 +21,7 @@ export const Profile = ({}) => {
         const [coverImg,setCoverImg]=useState(null);
 
         console.log('===>', username)
+        console.log('===>', profileImg)
         useEffect(()=>{
             const getUser=async()=>{
                 try {
@@ -76,7 +77,7 @@ export const Profile = ({}) => {
                 <input style={{display:'none'}} id='profilepicture' type="file" onChange={(e)=>setProfileImg(e.target.files[0])} />
                 <label  style={{margin:'10px', fontSize:'35px'}}  htmlFor="coverpic"><FaCcDiscover /></label>
                 <input  style={{display:'none'}} id='coverpic' type="file" onChange={(e)=>setCoverImg(e.target.files[0])} />
-               {profileImg || coverImg &&(<button style={{height:"30px" ,width:"70px", margin:'26px 0'}} onClick={()=>(profileImg || coverImg)?picUpload():alert("please add Picture")}>Uplaod</button>)} 
+               {(profileImg?.name || coverImg?.name )? <button style={{height:"30px" ,width:"70px", margin:'26px 0'}} onClick={()=>(profileImg || coverImg)?picUpload():alert("please add Picture")}>Uplaod</button>:""} 
                 
             </div>):''}
                 <div className='profileDetail'>
